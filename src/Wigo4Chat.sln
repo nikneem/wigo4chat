@@ -7,6 +7,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Aspire.AppHost
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Aspire.ServiceDefaults", "Aspire\Wigo4it.Chat.Aspire\Wigo4it.Chat.Aspire.ServiceDefaults\Wigo4it.Chat.Aspire.ServiceDefaults.csproj", "{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aspire", "Aspire", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chat", "Chat", "{303ABD73-A0C7-4202-BA55-30CB98E89B2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Api", "Chat\Wigo4it.Chat.Api\Wigo4it.Chat.Api.csproj", "{EA75D426-5590-07A4-EC08-B2F014DD351F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.UsersService", "Chat\Wigo4it.Chat.UsersService\Wigo4it.Chat.UsersService.csproj", "{9423CDAD-081A-437E-BDC2-BCD18407A9D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.ChatService", "Chat\Wigo4it.Chat.ChatService\Wigo4it.Chat.ChatService.csproj", "{A3405505-CC0E-4AAF-BB2B-644DF31063EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2C6C0929-55F3-43EE-9221-BFB812384505}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Core", "Shared\Wigo4it.Chat.Core\Wigo4it.Chat.Core.csproj", "{EB2438CB-1332-4AFA-8346-2F6EB9AAFC34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +35,33 @@ Global
 		{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA75D426-5590-07A4-EC08-B2F014DD351F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA75D426-5590-07A4-EC08-B2F014DD351F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA75D426-5590-07A4-EC08-B2F014DD351F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA75D426-5590-07A4-EC08-B2F014DD351F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9423CDAD-081A-437E-BDC2-BCD18407A9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9423CDAD-081A-437E-BDC2-BCD18407A9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9423CDAD-081A-437E-BDC2-BCD18407A9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9423CDAD-081A-437E-BDC2-BCD18407A9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3405505-CC0E-4AAF-BB2B-644DF31063EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3405505-CC0E-4AAF-BB2B-644DF31063EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3405505-CC0E-4AAF-BB2B-644DF31063EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3405505-CC0E-4AAF-BB2B-644DF31063EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB2438CB-1332-4AFA-8346-2F6EB9AAFC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2438CB-1332-4AFA-8346-2F6EB9AAFC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2438CB-1332-4AFA-8346-2F6EB9AAFC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2438CB-1332-4AFA-8346-2F6EB9AAFC34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D5CF287-CB2F-47B8-81A0-0F05ECE6DB33} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{EFD80616-5A1B-4E5D-B162-C54E89E1F24D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{EA75D426-5590-07A4-EC08-B2F014DD351F} = {303ABD73-A0C7-4202-BA55-30CB98E89B2C}
+		{9423CDAD-081A-437E-BDC2-BCD18407A9D8} = {303ABD73-A0C7-4202-BA55-30CB98E89B2C}
+		{A3405505-CC0E-4AAF-BB2B-644DF31063EA} = {303ABD73-A0C7-4202-BA55-30CB98E89B2C}
+		{EB2438CB-1332-4AFA-8346-2F6EB9AAFC34} = {2C6C0929-55F3-43EE-9221-BFB812384505}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3FA8742D-AF0F-4B42-AE76-C98DF348E68B}
