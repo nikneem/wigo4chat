@@ -22,9 +22,9 @@ hostBuilder.ConfigureServices((context, services) =>
     {
         builder.AddConsole();
     });
-    
+
     // Configure options
-    services.Configure<OllamaClientOptions>(options => 
+    services.Configure<OllamaClientOptions>(options =>
     {
         context.Configuration.GetSection("ChatClient").Bind(options);
         // Set hub URL based on the service endpoint
@@ -32,10 +32,10 @@ hostBuilder.ConfigureServices((context, services) =>
         if (!string.IsNullOrEmpty(serviceEndpoint))
         {
             options.BaseUrl = serviceEndpoint;
-            options.HubUrl = $"{serviceEndpoint}/hubs/chat";
+            options.HubUrl = $"{serviceEndpoint}/chathub";
         }
     });
-    
+
     // Add chat client services
     services.AddWigo4itChatClient(options =>
     {
@@ -43,17 +43,17 @@ hostBuilder.ConfigureServices((context, services) =>
         if (!string.IsNullOrEmpty(serviceEndpoint))
         {
             options.BaseUrl = serviceEndpoint;
-            options.HubUrl = $"{serviceEndpoint}/hubs/chat";
+            options.HubUrl = $"{serviceEndpoint}/chathub";
         }
     });
-    
+
     // Add Ollama service
     services.Configure<OllamaSettings>(context.Configuration.GetSection("OllamaSettings"));
     services.AddHttpClient<IOllamaService, OllamaService>();
-    
+
     // Add message handler
     services.AddSingleton<IChatMessageHandler, ChatMessageHandler>();
-    
+
     // Add hosted service
     services.AddHostedService<OllamaClientHostedService>();
 });
@@ -90,23 +90,23 @@ public class OllamaClientHostedService : BackgroundService
         try
         {
             _logger.LogInformation("Ollama Chat Client starting...");
-            
+
             // Set up SignalR hub connection to receive messages
             _chatHubClient.OnMessageReceived += async (ChatMessage message) =>
             {
                 await _messageHandler.HandleMessageAsync(message);
             };
-            
+
             // Connect to the chat service
             await _chatHubClient.ConnectAsync();
             _logger.LogInformation("Connected to chat hub");
-            
+
             // Send initial message to the chat
             await _chatClient.SendMessageAsync(
-                Guid.Parse(_options.UserId), 
+                Guid.Parse(_options.UserId),
                 "Hello! I'm the Ollama AI assistant. Type a message starting with 'ollama' followed by your question, and I'll respond with an AI-generated answer."
             );
-            
+
             // Keep the service running until cancelled
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -116,7 +116,7 @@ public class OllamaClientHostedService : BackgroundService
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error in Ollama client service");
-            
+
             // Rethrow if not due to cancellation
             if (!stoppingToken.IsCancellationRequested)
             {
@@ -124,7 +124,7 @@ public class OllamaClientHostedService : BackgroundService
             }
         }
     }
-    
+
     public override async Task StopAsync(CancellationToken stoppingToken)
     {
         _logger.LogInformation("Ollama Chat Client stopping...");

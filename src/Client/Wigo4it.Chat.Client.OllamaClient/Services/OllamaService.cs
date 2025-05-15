@@ -19,7 +19,7 @@ public class OllamaService : IOllamaService
         _httpClient = httpClient;
         _logger = logger;
         _settings = options.Value;
-        
+
         // Set base address from config
         _httpClient.BaseAddress = new Uri(_settings.ApiEndpoint);
     }
@@ -29,24 +29,24 @@ public class OllamaService : IOllamaService
         try
         {
             _logger.LogInformation("Sending prompt to Ollama: {Prompt}", prompt);
-            
+
             var request = new OllamaRequest
             {
                 Model = _settings.Model,
                 Prompt = prompt,
                 Stream = false
             };
-            
+
             var requestJson = JsonSerializer.Serialize(request);
             var content = new StringContent(requestJson, Encoding.UTF8, "application/json");
-            
+
             var response = await _httpClient.PostAsync("/api/generate", content);
             response.EnsureSuccessStatusCode();
-            
+
             var responseBody = await response.Content.ReadAsStringAsync();
-            var ollamaResponse = JsonSerializer.Deserialize<OllamaResponse>(responseBody, 
+            var ollamaResponse = JsonSerializer.Deserialize<OllamaResponse>(responseBody,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            
+
             return ollamaResponse?.Response ?? "No response from Ollama";
         }
         catch (Exception ex)

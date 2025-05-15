@@ -41,7 +41,7 @@ public class ChatMessageHandler : IChatMessageHandler
 
             // Extract the question (everything after "ollama ")
             var question = content.Substring(OLLAMA_PREFIX.Length).Trim();
-            
+
             if (string.IsNullOrWhiteSpace(question))
             {
                 await SendResponseAsync("Please provide a question after 'ollama'.");
@@ -52,7 +52,7 @@ public class ChatMessageHandler : IChatMessageHandler
             {
                 // Get response from Ollama
                 var response = await _ollamaService.GetCompletionAsync(question);
-                
+
                 // Send response back to chat
                 await SendResponseAsync($"@{message.SenderName} asked: {question}\n\n{response}");
             }
