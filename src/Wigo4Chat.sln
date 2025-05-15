@@ -1,9 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Aspire.AppHost", "Aspire\Wigo4it.Chat.Aspire\Wigo4it.Chat.Aspire.AppHost\Wigo4it.Chat.Aspire.AppHost.csproj", "{8D5CF287-CB2F-47B8-81A0-0F05ECE6DB33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Aspire.ServiceDefaults", "Aspire\Wigo4it.Chat.Aspire\Wigo4it.Chat.Aspire.ServiceDefaults\Wigo4it.Chat.Aspire.ServiceDefaults.csproj", "{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D5CF287-CB2F-47B8-81A0-0F05ECE6DB33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D5CF287-CB2F-47B8-81A0-0F05ECE6DB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D5CF287-CB2F-47B8-81A0-0F05ECE6DB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D5CF287-CB2F-47B8-81A0-0F05ECE6DB33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD80616-5A1B-4E5D-B162-C54E89E1F24D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
