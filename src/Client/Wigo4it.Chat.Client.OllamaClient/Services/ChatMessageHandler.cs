@@ -11,6 +11,7 @@ public class ChatMessageHandler : IChatMessageHandler
     private readonly ILogger<ChatMessageHandler> _logger;
     private readonly OllamaClientOptions _options;
     private const string OLLAMA_PREFIX = "ollama";
+    private Guid userId = Guid.Empty; // Default value for userId
 
     public ChatMessageHandler(
         IChatClient chatClient,
@@ -24,7 +25,7 @@ public class ChatMessageHandler : IChatMessageHandler
         _options = options.Value;
     }
 
-    public async Task HandleMessageAsync(ChatMessage message)
+    public async Task HandleMessageAsync(Guid userId, ChatMessage message)
     {
         // Skip our own messages to avoid infinite loops
         if (message.SenderName == _options.UserName)
@@ -44,7 +45,7 @@ public class ChatMessageHandler : IChatMessageHandler
 
             if (string.IsNullOrWhiteSpace(question))
             {
-                await SendResponseAsync("Please provide a question after 'ollama'.");
+                await SendResponseAsync(userId,"Please provide a question after 'ollama'.");
                 return;
             }
 
@@ -54,23 +55,23 @@ public class ChatMessageHandler : IChatMessageHandler
                 var response = await _ollamaService.GetCompletionAsync(question);
 
                 // Send response back to chat
-                await SendResponseAsync($"@{message.SenderName} asked: {question}\n\n{response}");
+                await SendResponseAsync(userId,$"@{message.SenderName} asked: {question}\n\n{response}");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error processing ollama request");
-                await SendResponseAsync($"Sorry, I encountered an error while processing your request: {ex.Message}");
+                await SendResponseAsync(userId,$"Sorry, I encountered an error while processing your request: {ex.Message}");
             }
         }
     }
 
-    private async Task SendResponseAsync(string message)
+    private async Task SendResponseAsync(Guid userId, string message)
     {
-        await _chatClient.SendMessageAsync(Guid.Parse(_options.UserId), message);
+        await _chatClient.SendMessageAsync(userId, message);
     }
 }
 
 public interface IChatMessageHandler
 {
-    Task HandleMessageAsync(ChatMessage message);
+    Task HandleMessageAsync(Guid userId, ChatMessage message);
 }

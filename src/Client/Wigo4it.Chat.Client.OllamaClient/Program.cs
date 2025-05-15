@@ -90,20 +90,23 @@ public class OllamaClientHostedService : BackgroundService
         try
         {
             _logger.LogInformation("Ollama Chat Client starting...");
+            var user = await _chatClient.JoinChatAsync(_options.UserName);
 
             // Set up SignalR hub connection to receive messages
             _chatHubClient.OnMessageReceived += async (ChatMessage message) =>
             {
-                await _messageHandler.HandleMessageAsync(message);
+                await _messageHandler.HandleMessageAsync(user.UserId, message);
             };
 
             // Connect to the chat service
             await _chatHubClient.ConnectAsync();
             _logger.LogInformation("Connected to chat hub");
 
+
+
             // Send initial message to the chat
             await _chatClient.SendMessageAsync(
-                Guid.Parse(_options.UserId),
+                user.UserId,
                 "Hello! I'm the Ollama AI assistant. Type a message starting with 'ollama' followed by your question, and I'll respond with an AI-generated answer."
             );
 
