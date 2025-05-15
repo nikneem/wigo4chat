@@ -36,7 +36,7 @@ namespace Wigo4it.Chat.Client
             }
 
             _hubConnection = new HubConnectionBuilder()  
-                //             .WithUrl(_options.HubUrl)
+                .WithUrl(_options.HubUrl)
                 .WithAutomaticReconnect()
                 .Build();
 

@@ -66,5 +66,7 @@ namespace Wigo4it.Chat.Api.Controllers
                 return StatusCode(500, "An error occurred while sending the message");
             }
         }
+
+
     }
 }

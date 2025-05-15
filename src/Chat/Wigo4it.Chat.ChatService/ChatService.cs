@@ -10,9 +10,9 @@ namespace Wigo4it.Chat.ChatService
     public class ChatService : IChatService
     {
         private const string STATE_STORE = "chat-state-store";
-        private const string PUB_SUB = "chat-pub-sub";
+        public const string PUB_SUB = "chat-pub-sub";
         private const string CHAT_HISTORY_KEY = "chat-history";
-        private const string MESSAGE_TOPIC = "chat-messages";
+        public const string MESSAGE_TOPIC = "chat-messages";
         private const int MAX_CHAT_HISTORY = 50;
 
         private readonly DaprClient _daprClient;

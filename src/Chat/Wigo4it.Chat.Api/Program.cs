@@ -46,16 +46,6 @@ if (app.Environment.IsDevelopment())
 // Use CORS
 app.UseCors("AllowAll");
 
-app.UseHttpsRedirection();
-
-// Add Dapr middleware
-app.UseCloudEvents();
-app.MapSubscribeHandler();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
 // Map SignalR hub
 app.MapHub<Wigo4it.Chat.Api.Hubs.ChatHub>("/chathub");
 

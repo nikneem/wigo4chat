@@ -113,6 +113,13 @@ public static class Extensions
                 Predicate = r => r.Tags.Contains("live")
             });
         }
+
+        app.UseCloudEvents();
+        app.MapSubscribeHandler();
+
+        app.UseAuthorization();
+
+        app.MapControllers();
         return app;
     }
 }

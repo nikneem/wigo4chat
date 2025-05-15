@@ -26,7 +26,6 @@ namespace Wigo4it.Chat.Api.Hubs
             await base.OnDisconnectedAsync(exception);
         }
 
-        [Topic("chat-pub-sub", "chat-messages")]
         public async Task BroadcastMessage(ChatMessage message)
         {
             await Clients.Group("ChatRoom").SendAsync("ReceiveMessage", message);
