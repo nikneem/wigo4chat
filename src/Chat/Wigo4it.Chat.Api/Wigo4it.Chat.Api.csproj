@@ -10,12 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapr.AspNetCore" Version="1.13.0" />
+    <PackageReference Include="Dapr.Client" Version="1.13.0" />
+    <PackageReference Include="Dapr.Extensions.Configuration" Version="1.13.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.2" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Aspire\Wigo4it.Chat.Aspire\Wigo4it.Chat.Aspire.ServiceDefaults\Wigo4it.Chat.Aspire.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Wigo4it.Chat.ChatService\Wigo4it.Chat.ChatService.csproj" />
+    <ProjectReference Include="..\Wigo4it.Chat.UsersService\Wigo4it.Chat.UsersService.csproj" />
+    <ProjectReference Include="..\..\Shared\Wigo4it.Chat.Core\Wigo4it.Chat.Core.csproj" />
   </ItemGroup>
 
 </Project>

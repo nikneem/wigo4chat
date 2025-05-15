@@ -35,6 +35,7 @@
 3. **Add Dapr support**:
    - Reference Dapr packages in the Web API project.
    - Configure the Web API to communicate with Dapr sidecars.
+   - The used Dapr components must be configured in the Aspire AppHost
 4. **Configure Dapr components**:
    - Create a `dapr` folder at the solution root.
    - Add two YAML files:
@@ -42,37 +43,37 @@
      - `pubsub.yaml` for Redis pub/sub.
    - Example `statestore.yaml`:
      ```yaml
-    apiVersion: dapr.io/v1alpha1
-    kind: Component
-    metadata:
-      name: chat-state-store
-    spec:
-      type: state.redis
-      version: v1
-      metadata:
-        - name: redisHost
-          value: localhost:6379
-        - name: redisPassword
-          value: ""
-        - name: actorStateStore
-          value: "true"
-        - name: keyPrefix
-          value: none
+     apiVersion: dapr.io/v1alpha1
+     kind: Component
+     metadata:
+       name: chat-state-store
+     spec:
+       type: state.redis
+       version: v1
+       metadata:
+         - name: redisHost
+           value: localhost:6379
+         - name: redisPassword
+           value: ""
+         - name: actorStateStore
+           value: "true"
+         - name: keyPrefix
+           value: none
      ```
    - Example `pubsub.yaml`:
      ```yaml
-    apiVersion: dapr.io/v1alpha1
-    kind: Component
-    metadata:
-      name: chat-pub-sub
-    spec:
-      type: pubsub.redis
-      version: v1
-      metadata:
-        - name: redisHost
-          value: localhost:6379
-        - name: redisPassword
-          value: ""
+     apiVersion: dapr.io/v1alpha1
+     kind: Component
+     metadata:
+       name: chat-pub-sub
+     spec:
+       type: pubsub.redis
+       version: v1
+       metadata:
+         - name: redisHost
+           value: localhost:6379
+         - name: redisPassword
+           value: ""
      ```
 5. **Ensure Redis is available locally** for Dapr components.
 6. **Update Aspire orchestration** to include Redis and Dapr sidecars as services.
@@ -83,7 +84,3 @@
 - All Aspire projects must reside in the `Aspire` folder.
 - Dapr components must use Redis as the backend for both storage and pub/sub.
 - The solution should be ready for local development and testing with Dapr and Redis.
-
-
-
-

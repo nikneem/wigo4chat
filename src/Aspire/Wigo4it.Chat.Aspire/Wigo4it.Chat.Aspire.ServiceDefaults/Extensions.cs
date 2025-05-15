@@ -113,7 +113,6 @@ public static class Extensions
                 Predicate = r => r.Tags.Contains("live")
             });
         }
-
         return app;
     }
 }
