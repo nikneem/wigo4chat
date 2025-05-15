@@ -16,7 +16,7 @@ namespace Wigo4it.Chat.Client
         {
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
             _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
-            
+
             if (!string.IsNullOrEmpty(_options.BaseUrl))
             {
                 _httpClient.BaseAddress = new Uri(_options.BaseUrl);
@@ -33,9 +33,9 @@ namespace Wigo4it.Chat.Client
 
             var request = new UserJoinDto { DisplayName = displayName };
             var response = await _httpClient.PostAsJsonAsync("api/users/join", request);
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var result = await response.Content.ReadFromJsonAsync<UserJoinResultDto>();
             return result ?? throw new InvalidOperationException("Failed to join chat");
         }
@@ -49,17 +49,17 @@ namespace Wigo4it.Chat.Client
             }
 
             var response = await _httpClient.GetAsync($"api/users/{userId}");
-            
+
             if (!response.IsSuccessStatusCode)
             {
                 if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
+
                 response.EnsureSuccessStatusCode();
             }
-            
+
             return await response.Content.ReadFromJsonAsync<ChatUser>();
         }
 
@@ -72,17 +72,17 @@ namespace Wigo4it.Chat.Client
             }
 
             var response = await _httpClient.PostAsync($"api/users/{userId}/ping", null);
-            
+
             if (!response.IsSuccessStatusCode)
             {
                 if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     return false;
                 }
-                
+
                 response.EnsureSuccessStatusCode();
             }
-            
+
             return true;
         }
 
@@ -90,9 +90,9 @@ namespace Wigo4it.Chat.Client
         public async Task<IEnumerable<ChatMessage>> GetChatHistoryAsync()
         {
             var response = await _httpClient.GetAsync("api/chat/history");
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var result = await response.Content.ReadFromJsonAsync<IEnumerable<ChatMessage>>();
             return result ?? Enumerable.Empty<ChatMessage>();
         }
@@ -117,17 +117,17 @@ namespace Wigo4it.Chat.Client
             };
 
             var response = await _httpClient.PostAsJsonAsync("api/chat/message", request);
-            
+
             if (!response.IsSuccessStatusCode)
             {
                 if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
+
                 response.EnsureSuccessStatusCode();
             }
-            
+
             return await response.Content.ReadFromJsonAsync<ChatMessage>();
         }
     }

@@ -9,7 +9,7 @@ namespace Wigo4it.Chat.Client
         /// The base URL of the chat service API
         /// </summary>
         public string BaseUrl { get; set; } = string.Empty;
-        
+
         /// <summary>
         /// The SignalR hub URL for real-time chat
         /// </summary>
