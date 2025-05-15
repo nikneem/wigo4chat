@@ -238,15 +238,18 @@ void HandleMessageReceived(ChatMessage message)
         // Make sure we don't interrupt user input
         if (message.SenderId != currentUser?.Id)
         {
+            // Clear current input line
             int cursorLeft = Console.CursorLeft;
             int cursorTop = Console.CursorTop;
-
             Console.WriteLine();
+
+            // Display the message
             DisplayMessage(message);
 
-            // Restore cursor to input position
+            // Position cursor right under the message instead of restoring to original position
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write("> ");
-            Console.SetCursorPosition(cursorLeft, cursorTop);
+            Console.ResetColor();
         }
     }
 }
@@ -255,6 +258,7 @@ void HandleUserJoined(ChatUser user)
 {
     if (user != null && user.Id != currentUser?.Id)
     {
+        // Clear current input line
         int cursorLeft = Console.CursorLeft;
         int cursorTop = Console.CursorTop;
 
@@ -263,9 +267,10 @@ void HandleUserJoined(ChatUser user)
         Console.WriteLine($"[SYSTEM] {user.DisplayName} has joined the chat");
         Console.ResetColor();
 
-        // Restore cursor to input position
+        // Position cursor right under the message
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.Write("> ");
-        Console.SetCursorPosition(cursorLeft, cursorTop);
+        Console.ResetColor();
     }
 }
 
@@ -280,6 +285,7 @@ void HandleUserLeft(Guid userId)
 
     if (userId != currentUser?.Id)
     {
+        // Clear current input line
         int cursorLeft = Console.CursorLeft;
         int cursorTop = Console.CursorTop;
 
@@ -288,9 +294,10 @@ void HandleUserLeft(Guid userId)
         Console.WriteLine($"[SYSTEM] {username} has left the chat");
         Console.ResetColor();
 
-        // Restore cursor to input position
+        // Position cursor right under the message
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.Write("> ");
-        Console.SetCursorPosition(cursorLeft, cursorTop);
+        Console.ResetColor();
     }
 }
 
