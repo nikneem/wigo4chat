@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Client", "Clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Client.Console", "Client\Wigo4it.Chat.Client.Console\Wigo4it.Chat.Client.Console.csproj", "{C7F15AE9-D6FE-4427-A753-C971BAD16E42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wigo4it.Chat.Client.OllamaClient", "Client\Wigo4it.Chat.Client.OllamaClient\Wigo4it.Chat.Client.OllamaClient.csproj", "{CA8B7EB6-EC10-4AB2-B0BD-E454134B1BF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{C7F15AE9-D6FE-4427-A753-C971BAD16E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7F15AE9-D6FE-4427-A753-C971BAD16E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7F15AE9-D6FE-4427-A753-C971BAD16E42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA8B7EB6-EC10-4AB2-B0BD-E454134B1BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA8B7EB6-EC10-4AB2-B0BD-E454134B1BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA8B7EB6-EC10-4AB2-B0BD-E454134B1BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA8B7EB6-EC10-4AB2-B0BD-E454134B1BF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{EB2438CB-1332-4AFA-8346-2F6EB9AAFC34} = {2C6C0929-55F3-43EE-9221-BFB812384505}
 		{4A4AD5B2-CBB6-4BD8-8EC4-A46198761B7A} = {FE6A411E-29A7-48A8-A336-1520BC5D9FA8}
 		{C7F15AE9-D6FE-4427-A753-C971BAD16E42} = {FE6A411E-29A7-48A8-A336-1520BC5D9FA8}
+		{CA8B7EB6-EC10-4AB2-B0BD-E454134B1BF5} = {FE6A411E-29A7-48A8-A336-1520BC5D9FA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3FA8742D-AF0F-4B42-AE76-C98DF348E68B}

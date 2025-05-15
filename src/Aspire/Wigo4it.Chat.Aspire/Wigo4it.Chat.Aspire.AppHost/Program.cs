@@ -13,4 +13,13 @@ var options = new DaprSidecarOptions
 var api = builder.AddProject<Projects.Wigo4it_Chat_Api>("wigo4it-chat-api")
     .WithDaprSidecar(options);
 
+// Add Ollama container service
+//var ollama = builder.AddContainer("ollama", "ollama/ollama")
+//    .WithHttpEndpoint(11434, 11434, name: "api")
+//    .WithHttpEndpoint(11434, name: "ollama-api");
+
+// Add Ollama client project
+builder.AddProject("wigo4it-chat-ollama-client", "../../../Client/Wigo4it.Chat.Client.OllamaClient/Wigo4it.Chat.Client.OllamaClient.csproj")
+    .WithReference(api);
+
 builder.Build().Run();

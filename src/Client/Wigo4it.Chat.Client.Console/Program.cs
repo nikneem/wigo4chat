@@ -25,7 +25,9 @@ var host = Host.CreateDefaultBuilder(args)
         services.AddWigo4itChatClient(options =>
         {
             options.BaseUrl = context.Configuration.GetValue<string>("ChatService:BaseUrl") ?? "https://wigo4chat-app.wittyocean-892fd4b9.northeurope.azurecontainerapps.io/";
-            options.HubUrl = context.Configuration.GetValue<string>("ChatService:HubUrl") ?? "https://wigo4chat-app.wittyocean-892fd4b9.northeurope.azurecontainerapps.io/chathub";
+            options.HubUrl = context.Configuration.GetValue<string>("ChatService:HubUrl") ?? "https://wigo4chat-app.wittyocean-892fd4b9.northeurope.azurecontainerapps.io//chathub";
+            //options.BaseUrl = context.Configuration.GetValue<string>("ChatService:BaseUrl") ?? "https://localhost:7109";
+            //options.HubUrl = context.Configuration.GetValue<string>("ChatService:HubUrl") ?? "https://localhost:7109/chathub";
         });
     })
     .Build();
